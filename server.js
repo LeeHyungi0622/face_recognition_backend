@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import bcrypt from "bcrypt-nodejs";
 import cors from "cors";
@@ -74,6 +74,10 @@ app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db) });
 
 app.put('/image', (req, res) => { image.handleImage(req, res, db) });
 
-app.listen(4002, () => {
-    console.log('app is running on port 4002');
+app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) });
+
+const PORT = process.env.PORT
+
+app.listen(3000, () => {
+    console.log(`app is running on port 3000`);
 });
